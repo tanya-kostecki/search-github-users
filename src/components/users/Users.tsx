@@ -1,47 +1,53 @@
 import { FC } from 'react'
 import * as S from './users.styles'
-import { Search, User } from '../../interfaces/interfaces'
-// import UserItem from './UserItem'
-import PaginationButtons from '../pagination-buttons/PaginationButtons'
+import { Search, User } from '../../interfaces/interfaces';
 
 type Users = {
-    users: Search | undefined;
-    setIsModal: (isModal: boolean) => void
-    setSelectedUser: (user: User) => void 
-}
+  users: Search | undefined;
+  setIsModal: (isModal: boolean) => void;
+  setSelectedUser: (user: User) => void;
+  pagination: number;
+  setPagination: (pagination: number | ((prev: number) => number)) => void
+};
 const Users: FC<Users> = (props) => {
-  const { users, setIsModal, setSelectedUser } = props
+  const { users, setIsModal, setSelectedUser, pagination, setPagination } = props;
 
   const openModal = (user: User) => {
-    setSelectedUser(user) 
-    setIsModal(true)
+    setSelectedUser(user);
+    setIsModal(true);
+  };
+
+  const moveForward = () => {
+    if (pagination === 1 || pagination > 1) {
+      setPagination((prev: number) => prev + 1)
+    }
   }
-  
-  // const USERS_PER_PAGE = 30
-  // if (users) {
-  //   const pages = Math.ceil(users?.total_count / USERS_PER_PAGE)
-  //   console.log('pages', pages) //the number of pages with all users on github
-  // }
+
+  const moveBackward = () => {
+    if (pagination === 1 || pagination < 1) {
+      return
+    } else {
+      setPagination((prev: number) => prev - 1)
+    }
+  }
 
   return (
     <>
-        <S.AllUsers>           
-            {users?.items.map((user) => (
-                // <UserItem 
-                // key={user.id}
-                // login={user.login}
-                // id={user.id}
-                // avatar_url={user.avatar_url} />
-                <S.UserItemContainer key={user.id} onClick={() => openModal(user)}>
-                  <S.UserAvatar src={user.avatar_url}/>
-                  <S.UserLogin>{user.login}</S.UserLogin>  
-                </S.UserItemContainer>
-            ))}
-        </S.AllUsers>
-        <PaginationButtons/>
+      <S.AllUsers>
+        {users?.items.map((user) => (
+          <S.UserItemContainer key={user.id} onClick={() => openModal(user)}>
+            <S.UserAvatar src={user.avatar_url} />
+            <S.UserLogin>{user.login}</S.UserLogin>
+          </S.UserItemContainer>
+        ))}
+      </S.AllUsers>
+      <S.PaginationContainer>
+        <S.PaginationButton disabled={pagination === 1} onClick={moveBackward}>Назад</S.PaginationButton>
+        <S.PaginationParagraph>Страница -{pagination}-</S.PaginationParagraph>
+        <S.PaginationButton onClick={moveForward}>Вперед</S.PaginationButton>
+      </S.PaginationContainer>
     </>
-        
-  )
-}
+  );
+};
 
 export default Users

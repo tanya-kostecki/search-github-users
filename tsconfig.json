@@ -20,6 +20,12 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+   " project": ["./tsconfig.json", "./tsconfig.node.json"],
+    "tsconfigRootDir":" __dirname",
+  },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -13,24 +13,21 @@ const UserInfo = ({ setIsModal, user }: Modal) => {
   
   return (
     <S.UserContainer>
-        <S.CloseBlock onClick={closeModal}>
-            <S.CloseButton src='close-circle.svg'/>
-        </S.CloseBlock>
+      <S.CloseBlock onClick={closeModal}>
+        <S.CloseButton src="close-circle.svg" />
+      </S.CloseBlock>
 
-           <S.UserBlock>
-           <S.UserAvatar src={user?.avatar_url}/>
-           <S.UserInfo>
-               <S.UserName>{user?.login}</S.UserName>
-               <a href={user?.html_url}>
-                 <S.UserRepositories>Ссылка на профиль</S.UserRepositories>
-               </a>
-           </S.UserInfo>
+      <S.UserBlock>
+        <S.UserAvatar src={user?.avatar_url} />
+        <S.UserInfo>
+          <S.UserName>{user?.login}</S.UserName>
+          <a href={user?.html_url}>
+            <S.UserRepositories>Ссылка на профиль</S.UserRepositories>
+          </a>
+        </S.UserInfo>
       </S.UserBlock>
-        
-      
-      
     </S.UserContainer>
-  )
+  );
 }
 
 export default UserInfo
