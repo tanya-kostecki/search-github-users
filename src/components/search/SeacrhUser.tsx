@@ -1,4 +1,3 @@
-// import React from 'react'
 import * as S from './search.styles'
 
 interface Modal {
@@ -9,10 +8,9 @@ const SeacrhUser = ({ setInput }: Modal) => {
     <S.SearchContainer>
       <S.GitHubLogo src="github-logo.png" />
       <S.SearchTitle>Поиск пользователя GitHub</S.SearchTitle>
-      <S.SeacrhInfo>Введите имя пользователя</S.SeacrhInfo>
       <S.SearchForm>
         <S.SearchInput
-          placeholder="Имя пользователя"
+          placeholder="Введите имя пользователя"
           onChange={(e) => setInput(e.target.value)}
         />
       </S.SearchForm>

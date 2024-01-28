@@ -5,6 +5,7 @@ import { useGetUsersQuery } from '../../redux/services/users'
 import Users from '../../components/users/Users'
 import { MainContainer } from './main.styles'
 import { User } from '../../interfaces/interfaces';
+import RadioButtons from '../../components/radio-buttons/RadioButtons';
 
 const MainPage = () => {
   const [isModal, setIsModal] = useState<boolean>(false)
@@ -28,22 +29,25 @@ const MainPage = () => {
     avatar_url: '',
     html_url: '',
   });
-  
+
   return (
     <MainContainer>
       <SeacrhUser setInput={setInput} />
       {isModal && <UserInfo setIsModal={setIsModal} user={selectedUser} />}
-      {isLoading && (<div>Пользователи загружаются...</div>)}
+      {isLoading && <div>Пользователи загружаются...</div>}
       {error ? (
         <div>Произошла ошибка, попробуйте позже</div>
       ) : (
-        <Users
-          users={users}
-          setIsModal={setIsModal}
-          setSelectedUser={setSelectedUser}
-          pagination={pagination}
-          setPagination={setPagination}
-        />
+        <>
+          <RadioButtons order={order} setOrder={setOrder} />
+          <Users
+            users={users}
+            setIsModal={setIsModal}
+            setSelectedUser={setSelectedUser}
+            pagination={pagination}
+            setPagination={setPagination}
+          />
+        </>
       )}
     </MainContainer>
   );

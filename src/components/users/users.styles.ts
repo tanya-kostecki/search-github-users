@@ -8,8 +8,8 @@ export const UserItemContainer = styled.div`
   height: 250px;
 
   &:hover {
-    border: 1px solid #6632a2;
-    box-shadow: 0px 0px 10px 5px #d2d1d1;
+    border: 2px solid green;
+    box-shadow: 0px 0px 10px 5px #bdbcbc;
     transition: all 0.3s ease-out;
   }
 `;

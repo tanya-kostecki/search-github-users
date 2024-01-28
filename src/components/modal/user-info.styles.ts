@@ -28,24 +28,30 @@ export const UserBlock = styled.div`
   height: 100%;
 `;
 export const UserAvatar = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   background-color: #f0f0f0;
 `;
 export const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 10px;
 `;
 export const UserName = styled.p`
-  font-size: 18px;
+  font-size: 42px;
   font-weight: 700;
-  color: red;
+  color: green;
   text-align: left;
 `;
-export const UserRepositories = styled.p`
+export const Label = styled.p`
+  text-align: left;
   font-size: 18px;
+  font-weight: 400;
+`
+export const UserRepositories = styled.p`
+  font-size: 24px;
   font-weight: 700;
-  color: red;
+  color: #646cff;
   text-align: left;
 `;
