@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import * as S from './users.styles'
-import { Search, User } from '../../interfaces/interfaces';
+import { Search, User } from '../../interfaces/interfaces';;
 
 type Users = {
   users: Search | undefined;
@@ -17,7 +17,14 @@ const Users: FC<Users> = (props) => {
     setIsModal(true);
   };
 
+  const usersOnPage = 30;
+  const currentPages = Number(Math.ceil(users?.total_count!! / usersOnPage));
   const moveForward = () => {
+    if (currentPages === pagination) {
+      setPagination(1)
+      return
+    }
+
     if (pagination === 1 || pagination > 1) {
       setPagination((prev: number) => prev + 1)
     }
@@ -31,6 +38,8 @@ const Users: FC<Users> = (props) => {
     }
   }
 
+  console.log(users)
+
   return (
     <>
       <S.AllUsers>
@@ -42,9 +51,9 @@ const Users: FC<Users> = (props) => {
         ))}
       </S.AllUsers>
       <S.PaginationContainer>
-        <S.PaginationButton disabled={pagination === 1} onClick={moveBackward}>Назад</S.PaginationButton>
+        <S.PaginationButton disabled={pagination === 1 || users?.items.length === 1} onClick={moveBackward}>Назад</S.PaginationButton>
         <S.PaginationParagraph>Страница -{pagination}-</S.PaginationParagraph>
-        <S.PaginationButton onClick={moveForward}>Вперед</S.PaginationButton>
+        <S.PaginationButton disabled={users?.items.length === 1} onClick={moveForward}>Вперед</S.PaginationButton>
       </S.PaginationContainer>
     </>
   );

@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+# Проект Search GitHub Users
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Тестовое задание от онлайн-школы Skypro
 
-Currently, two official plugins are available:
+## О проекте
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Интерфейс поиска пользователей GitHub, в котором реализован следующий функционал:
 
-## Expanding the ESLint configuration
+* поиск: по логину;
+* сортировка: по количеству репозиториев (возрастанию/убыванию);
+* пагинация; 
+* при клике на элемент открывается модальное окно с информацией о пользователе.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Как запустить проект?
 
-- Configure the top-level `parserOptions` property like this:
+* склонировать репозиторий;
+* установить пакет зависимостей (npm install);
+* запустить локальный сервер  (npm run dev).
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Приложение должно запуститься по адресу: http://localhost:3000/
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Технологии
+
+* React
+* React Router
+* Redux Toolkit для API запросов
+* TypeScript
+* Styled Components
+* ESLint

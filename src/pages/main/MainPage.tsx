@@ -8,15 +8,19 @@ import { User } from '../../interfaces/interfaces';
 import RadioButtons from '../../components/radio-buttons/RadioButtons';
 
 const MainPage = () => {
-  const [isModal, setIsModal] = useState<boolean>(false)
+  const [isModal, setIsModal] = useState<boolean>(false);
 
-  const [input, setInput] = useState<string>('github')
+  const [input, setInput] = useState<string>('github');
 
   const [order, setOrder] = useState<string>('desc');
 
   const [pagination, setPagination] = useState<number>(1);
 
-  const { data: users, error, isLoading } = useGetUsersQuery({
+  const {
+    data: users,
+    error,
+    isLoading,
+  } = useGetUsersQuery({
     login: input,
     order: order,
     per_page: 30,
@@ -34,19 +38,24 @@ const MainPage = () => {
     <MainContainer>
       <SeacrhUser setInput={setInput} />
       {isModal && <UserInfo setIsModal={setIsModal} user={selectedUser} />}
-      {isLoading && <div>Пользователи загружаются...</div>}
       {error ? (
-        <div>Произошла ошибка, попробуйте позже</div>
+        <div>Что-то пошло не так, попробуйте через несколько минут</div>
       ) : (
         <>
-          <RadioButtons order={order} setOrder={setOrder} />
-          <Users
-            users={users}
-            setIsModal={setIsModal}
-            setSelectedUser={setSelectedUser}
-            pagination={pagination}
-            setPagination={setPagination}
-          />
+          {isLoading ? (
+            <div>Пользователи загружаются...</div>
+          ) : (
+            <>
+              <RadioButtons order={order} setOrder={setOrder} />
+              <Users
+                users={users}
+                setIsModal={setIsModal}
+                setSelectedUser={setSelectedUser}
+                pagination={pagination}
+                setPagination={setPagination}
+              />
+            </>
+          )}
         </>
       )}
     </MainContainer>

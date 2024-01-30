@@ -48,7 +48,7 @@ export const Label = styled.p`
   text-align: left;
   font-size: 18px;
   font-weight: 400;
-`
+`;
 export const UserRepositories = styled.p`
   font-size: 24px;
   font-weight: 700;

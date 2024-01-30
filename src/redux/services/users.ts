@@ -12,17 +12,14 @@ export const searchUsersApi = createApi({
       { login: string; order: string; per_page: number; page: number }
     >({
       query: (args) => ({
-        url: `/search/users?q=${args.login}&sort=repositories&order=${args.order}&per_page=${args.per_page}&page=${args.page}`,
+        url: `/search/users?q=${args.login}&per_page=${args.per_page}&page=${args.page}&sort=repositories&order=${args.order}`,
         method: 'GET',
         headers: {
-          'X-GitHub-Api-Version': '2022-11-28',
-          Accept: 'application/vnd.github.v3+json',
+          'accept': 'application/vnd.github+json',
         },
       }),
     }),
   }),
 });
 
-export const { useGetUsersQuery, useLazyGetUsersQuery } = searchUsersApi
-
-// order is either desc or asc
+export const { useGetUsersQuery, useLazyGetUsersQuery } = searchUsersApi;

@@ -15,7 +15,6 @@ const UserInfo = ({ setIsModal, user }: Modal) => {
       <S.CloseBlock onClick={closeModal}>
         <S.CloseButton src="close-circle.svg" />
       </S.CloseBlock>
-
       <S.UserBlock>
         <S.UserAvatar src={user?.avatar_url} />
         <S.UserInfo>

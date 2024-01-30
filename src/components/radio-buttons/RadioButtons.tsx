@@ -14,6 +14,7 @@ const RadioButtons = ({ setOrder, order }: Radio) => {
   };
   return (
     <S.RadioContainer>
+      <S.RadioParagraph>Кол-во репозиториев</S.RadioParagraph>
       <div>
         <input
           type="radio"
