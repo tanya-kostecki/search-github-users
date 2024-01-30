@@ -38,8 +38,6 @@ const Users: FC<Users> = (props) => {
     }
   }
 
-  console.log(users)
-
   return (
     <>
       <S.AllUsers>
@@ -51,9 +49,9 @@ const Users: FC<Users> = (props) => {
         ))}
       </S.AllUsers>
       <S.PaginationContainer>
-        <S.PaginationButton disabled={pagination === 1 || users?.items.length === 1} onClick={moveBackward}>Назад</S.PaginationButton>
+        <S.PaginationButton disabled={pagination === 1} onClick={moveBackward}>Назад</S.PaginationButton>
         <S.PaginationParagraph>Страница -{pagination}-</S.PaginationParagraph>
-        <S.PaginationButton disabled={users?.items.length === 1} onClick={moveForward}>Вперед</S.PaginationButton>
+        <S.PaginationButton onClick={moveForward}>Вперед</S.PaginationButton>
       </S.PaginationContainer>
     </>
   );
